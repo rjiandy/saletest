@@ -2,9 +2,8 @@
 
 import React, { Component } from 'react';
 import autobind from 'class-autobind';
-import IconButton from './core-ui/IconButton';
-import Button from './core-ui/Button';
-import Modal from './core-ui/Modal';
+
+import {Modal, Button, IconButton} from './core-ui';
 
 type Props = any;
 type State = any;
