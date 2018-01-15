@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with props 1`] = `
+<div
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "rgba(0, 0, 0, 0.8)",
+      "bottom": 0,
+      "left": 0,
+      "overflow": "hidden",
+      "position": "fixed",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "red",
+        "left": "50%",
+        "position": "fixed",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+      }
+    }
+  >
+    <div />
+  </div>
+</div>
+`;

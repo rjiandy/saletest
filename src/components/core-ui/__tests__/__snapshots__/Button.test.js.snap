@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with props 1`] = `
+<div
+  onClick={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgb(215, 60, 60)",
+      "borderRadius": 2,
+      "cursor": "pointer",
+      "display": "flex",
+      "flex": 1,
+      "height": "40px",
+      "justifyContent": "center",
+      "width": "100px",
+    }
+  }
+>
+  <span
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 12,
+        "fontWeight": "700",
+      }
+    }
+  >
+    asd
+  </span>
+</div>
+`;
+
+exports[`renders correctly with props 2`] = `
+<div
+  onClick={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgb(215, 60, 60)",
+      "borderRadius": 2,
+      "cursor": "pointer",
+      "display": "flex",
+      "flex": 1,
+      "height": "40px",
+      "justifyContent": "center",
+      "width": "100px",
+    }
+  }
+>
+  <span
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 12,
+        "fontWeight": "700",
+      }
+    }
+  >
+    asd
+  </span>
+</div>
+`;

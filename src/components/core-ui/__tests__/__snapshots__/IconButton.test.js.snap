@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with props 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "color": "rgba(100, 100, 100, 0.6)",
+      "cursor": "pointer",
+      "display": "flex",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <span
+    className="material-icons"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "color": "rgba(100, 100, 100, 0.6)",
+        "display": "inline-block",
+        "fontSize": 16,
+        "muiPrepared": true,
+        "position": "relative",
+        "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+        "userSelect": "none",
+      }
+    }
+  >
+    close
+  </span>
+  <span
+    style={
+      Object {
+        "marginLeft": "6px",
+      }
+    }
+  >
+    asd
+  </span>
+</div>
+`;
