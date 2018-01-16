@@ -3,10 +3,18 @@
 import React, { Component } from 'react';
 import autobind from 'class-autobind';
 
-import {Modal, Button, IconButton} from './core-ui';
+import {Modal, Button, IconButton, Image} from './core-ui';
 
-type Props = any;
-type State = any;
+import type {Product} from '../types/Product-type';
+
+type Props = {
+    product: Product;
+};
+
+type State = {
+    isDisplayingDetail: boolean;
+    isDisplayingModal: boolean;
+};
 
 export default class ProductItem extends Component<Props, State> {
 
@@ -42,14 +50,15 @@ export default class ProductItem extends Component<Props, State> {
                             isDisplayingModal: false,
                         });
                     }}
-                    content={<img src={product.image} />}
+                    content={<img src={product.image} alt="" />}
                     isModalOpen={this.state.isDisplayingModal}
                 />
-                <img 
+                <Image
                     src={product.image}
                     height="450px"
                     width="100%"
-                    alt="detail"
+                    alt=""
+                    style={{imageRendering: 'pixelated'}}
                     onClick={() => {
                         this.state.isDisplayingDetail ? 
                             this.onImageClick() :
