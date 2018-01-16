@@ -1,34 +1,29 @@
 // @flow
 
-import React, {Component} from 'react';
-import autobind from 'class-autobind';
+import React from 'react';
 
-type Props = any;
-type State = any;
+type Props = {
+    content: ?React$Element<*>;
+    isModalOpen: boolean;
+    onClose: () => any;
+};
 
-export default class Modal extends Component<Props, State> {
-    constructor() {
-        super(...arguments);
-        autobind(this);
+export default function Modal(props: Props) {
+    let {content, isModalOpen, onClose} = props;
+    if (isModalOpen) {
+        // $FlowFixMe
+        document.body.style.overflow = "hidden" 
+    } else {
+        // $FlowFixMe
+        document.body.style.overflow = "scroll"
     }
-
-    render() {
-        let {content, isModalOpen, onClose} = this.props;
-        if (isModalOpen) {
-            // $FlowFixMe
-            document.body.style.overflow = "hidden" 
-        } else {
-            // $FlowFixMe
-            document.body.style.overflow = "scroll"
-        }
-        return isModalOpen ? (
-            <div style={styles.overlay} onClick={onClose}>
-                <div style={styles.content}>
-                    {content}
-                </div>
+    return isModalOpen ? (
+        <div style={styles.overlay} onClick={onClose}>
+            <div style={styles.content}>
+                {content}
             </div>
-        ) : null;
-    }
+        </div>
+    ) : null;
 }
 
 const styles = {
@@ -46,6 +41,5 @@ const styles = {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        backgroundColor: 'red',
     },
 }
