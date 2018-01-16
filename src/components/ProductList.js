@@ -67,7 +67,14 @@ class ProductList extends Component<Props, State> {
     if (isLoading) { // TODO: Add Spinner
       return (
         <div>
-          Loading . . .
+          <RefreshIndicator
+            size={100}
+            left={window.innerWidth / 2 - 50}
+            top={window.innerHeight / 2 - 50}
+            loadingColor='rgb(215, 60, 60)'
+            status="loading"
+            style={{display: 'inline-block', position: 'relative'}}
+          />
         </div>
       )
     }
@@ -76,7 +83,6 @@ class ProductList extends Component<Props, State> {
         <ProductItem key={idx} product={product} />
       );
     });
-    // NOTE: Possibility adding refresh indicator on my Own
     return (
       <div style={styles.productList}>
         <InfiniteScroll
