@@ -11,12 +11,12 @@ let product = {
   description: `Warna Black and White;Satu ukuran muat sampai size M;Lingkar dada 86 cm, Lebar bahu 36 cm, Panjang lengan 15 cm, Lingkar lengan 32 cm, Panjang 62 cm, Lingkar pinggang 86 cm;Bahan Kaos`
 };
 
-export default function* productSaga(): Generator<*, *, *> {
-  yield takeEvery('FETCH_INITIAL_DATA_REQUESTED', getInitialProducts);
-  yield takeEvery('FETCH_MORE_DATA_REQUESTED', getMoreData);
+export default function* productSagaWatcher(): Generator<*, *, *> {
+  yield takeEvery('FETCH_INITIAL_DATA_REQUESTED', getInitialProductsSaga);
+  yield takeEvery('FETCH_MORE_DATA_REQUESTED', getMoreDataSaga);
 }
 
-export function* getMoreData(action: Action): Generator<*, *, *> {
+export function* getMoreDataSaga(action: Action): Generator<*, *, *> {
   try {
     // $FlowFixMe << happens because redux saga is not cleverly typed to read action    
     let moreProducts = yield call(fetchMore, action.page);
@@ -32,7 +32,7 @@ export function* getMoreData(action: Action): Generator<*, *, *> {
   }
 }
 
-export function* getInitialProducts(): Generator<*, *, *> {
+export function* getInitialProductsSaga(): Generator<*, *, *> {
   try {
     let products = yield call(fetchInits);
     yield put({
@@ -67,10 +67,10 @@ function generateRandomString() {
   return `${category[Math.floor(Math.random() * 10)]},${category[Math.floor(Math.random() * 10)]}`;
 };
 
-
+// NOTE: Below are mock fetch functions so the products will be return as a promise just like `fetch`
 export async function fetchInits() {
   let products = [];
-  await timeout(2000);
+  await timeout(2300);
   for (let i = 0; i < 5; i++) {
     products.push({
       ...product, 
@@ -85,7 +85,7 @@ export async function fetchMore(page: number) {
   await timeout(1000);
   console.log('Simulate Paging on REST', page);
   let products = [];
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 3; i++) {
     products.push({
       ...product, 
       id: product.id + Math.random() * 100,

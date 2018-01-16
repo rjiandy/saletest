@@ -2,10 +2,8 @@
 
 import {fork} from 'redux-saga/effects';
 
-import productSaga from './productSaga';
+import productSagaWatcher from './productSaga';
 
-let root = function* rootSaga(): Generator<*, *, *> {
-  yield fork(productSaga);
+export default function* rootSaga(): Generator<*, *, *> {
+  yield fork(productSagaWatcher);
 };
-
-export default root;
