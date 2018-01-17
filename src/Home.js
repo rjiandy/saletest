@@ -17,7 +17,7 @@ export default class Home extends Component<any, State> {
     super(...arguments);
     autobind(this);
     this.state = {
-      displaying: 'CMS',
+      displaying: 'products',
     };
   }
 
@@ -34,7 +34,6 @@ export default class Home extends Component<any, State> {
           <div style={styles.buttonContainer}>
             <IconButton 
               icon="list" 
-              style={{marginRight: '14px'}}
               iconStyle={{
                 fontSize: 24,
                 color: displaying === 'products' ? 'rgb(215, 60, 60)' : 'rgba(100, 100, 100, 0.6)',
@@ -69,16 +68,17 @@ const styles={
   },
   headerContainer: {
     display: 'flex',
+    position: 'fixed',
+    backgroundColor: 'white',
     width: '26%',
     height: '40px',
     paddingLeft: '37%',
     paddingRight: '37%',
-    marginBottom: '15px',
     borderBottom: '1px solid rgba(175, 175, 175, 0.5)',
     borderRadius: '2px',
   },
   buttonContainer: {
-    marginLeft: '60%',
+    marginLeft: '55%',
     height: '100%',
     display: 'flex',
   },
