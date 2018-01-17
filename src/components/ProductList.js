@@ -68,9 +68,9 @@ class ProductList extends Component<Props, State> {
       return (
         <div>
           <RefreshIndicator
-            size={100}
-            left={window.innerWidth / 2 - 50}
-            top={window.innerHeight / 2 - 50}
+            size={50}
+            left={window.innerWidth / 2 - 25}
+            top={window.innerHeight / 2 - 25}
             loadingColor='rgb(215, 60, 60)'
             status="loading"
             style={{display: 'inline-block', position: 'relative'}}
