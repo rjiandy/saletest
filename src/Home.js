@@ -1,7 +1,8 @@
 // @flow
 
 import React, {Component} from 'react';
-import ProductList from './components/ProductList';
+import ProductList from './components/Product/ProductList';
+import CMSHome from './components/CMS/CMSHome';
 
 import {IconButton} from './components/core-ui.js';
 
@@ -16,7 +17,7 @@ export default class Home extends Component<any, State> {
     super(...arguments);
     autobind(this);
     this.state = {
-      displaying: 'products',
+      displaying: 'CMS',
     };
   }
 
@@ -53,7 +54,7 @@ export default class Home extends Component<any, State> {
         {
           this.state.displaying === 'products' ? (
             <ProductList />
-          ) : <div>CMS</div>
+          ) : <CMSHome />
         }
       </div>
     )
@@ -68,7 +69,7 @@ const styles={
   },
   headerContainer: {
     display: 'flex',
-    width: '100%',
+    width: '26%',
     height: '40px',
     paddingLeft: '37%',
     paddingRight: '37%',
@@ -77,7 +78,7 @@ const styles={
     borderRadius: '2px',
   },
   buttonContainer: {
-    marginLeft: '15%',
+    marginLeft: '60%',
     height: '100%',
     display: 'flex',
   },

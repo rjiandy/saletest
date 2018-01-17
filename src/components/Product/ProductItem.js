@@ -3,9 +3,9 @@
 import React, { Component } from 'react';
 import autobind from 'class-autobind';
 
-import {Modal, Button, IconButton, Image} from './core-ui';
+import {Modal, Button, IconButton, Image} from '../core-ui';
 
-import type {Product} from '../types/Product-type';
+import type {Product} from '../../types/Product-type';
 
 type Props = {
     product: Product;

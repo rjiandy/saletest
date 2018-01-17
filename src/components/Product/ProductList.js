@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 
 import ProductItem from './ProductItem';
 
-import type {Product} from '../types/Product-type';
-import type {Dispatch, RootState} from '../stores/createStore';
+import type {Product} from '../../types/Product-type';
+import type {Dispatch, RootState} from '../../stores/createStore';
 
 type Props = {
   products: Array<Product>;
