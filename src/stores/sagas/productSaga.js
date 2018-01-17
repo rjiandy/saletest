@@ -6,8 +6,6 @@ import type {Action} from '../../stores/createStore';
 let product = {
   id: 165,
   name: 'Nomania Diamond Simple Tee',
-  price: '79.000',
-  likes: 129,
   description: `Warna Black and White;Satu ukuran muat sampai size M;Lingkar dada 86 cm, Lebar bahu 36 cm, Panjang lengan 15 cm, Lingkar lengan 32 cm, Panjang 62 cm, Lingkar pinggang 86 cm;Bahan Kaos`
 };
 
@@ -74,8 +72,10 @@ export async function fetchInits() {
   for (let i = 0; i < 5; i++) {
     products.push({
       ...product, 
-      id: product.id + Math.random() * 100,
+      id: product.id + Math.floor(Math.random() * 1000),
       image: `https://source.unsplash.com/880x880/?${generateRandomString()}`,
+      likes: Math.floor(Math.random() * 1000),
+      price: Math.floor(Math.random() * 99 + 10).toString() + '.000',
     });
   }
   return products;
@@ -88,8 +88,10 @@ export async function fetchMore(page: number) {
   for (let i = 0; i < 3; i++) {
     products.push({
       ...product, 
-      id: product.id + Math.random() * 100,
+      id: product.id + Math.floor(Math.random() * 1000),
       image: `https://source.unsplash.com/880x880/?${generateRandomString()}`,
+      likes: Math.floor(Math.random() * 1000),      
+      price: Math.floor(Math.random() * 99 + 10).toString() + '.000',
     });
   }
   return products;
