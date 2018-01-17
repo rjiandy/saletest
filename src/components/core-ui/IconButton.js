@@ -4,18 +4,24 @@ import React from 'react';
 import {FontIcon} from 'material-ui';
 
 type Props = {
-    text: string;
+    text?: string;
     icon: string;
     style?: {[key: string]: any};
+    iconStyle?: {[key: string]: any};
 };
 
 export default function IconButton(props: Props) {
-    let {text, icon, style, ...otherProps} = props;
+    let {text, icon, style, iconStyle, ...otherProps} = props;
     let composedStyle = {...styles.iconButton, ...style};
+    let composedIconStyle = {...styles.icon, ...iconStyle}
     return (
         <div style={composedStyle} {...otherProps}>
-            <FontIcon className="material-icons" style={styles.icon}>{icon}</FontIcon>
-            <span style={styles.text}>{text}</span>
+            <FontIcon className="material-icons" style={composedIconStyle}>{icon}</FontIcon>
+            {
+                text ? (
+                    <span style={styles.text}>{text}</span>
+                ) : null
+            }
         </div>
     )
 }
