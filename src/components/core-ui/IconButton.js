@@ -1,7 +1,8 @@
 // @flow
 
-import React from 'react';
+import React, {Component} from 'react';
 import {FontIcon} from 'material-ui';
+import autobind from 'class-autobind';
 
 type Props = {
     text?: string;
@@ -11,21 +12,48 @@ type Props = {
     textStyle?: {[key: string]: any};
 };
 
-export default function IconButton(props: Props) {
-    let {text, icon, textStyle, style, iconStyle, ...otherProps} = props;
-    let composedStyle = {...styles.iconButton, ...style};
-    let composedIconStyle = {...styles.icon, ...iconStyle};
-    let composedTextStyle = {...styles.text, ...textStyle};
-    return (
-        <div style={composedStyle} {...otherProps}>
-            <FontIcon className="material-icons" style={composedIconStyle}>{icon}</FontIcon>
-            {
-                text ? (
-                    <span style={composedTextStyle}>{text}</span>
-                ) : null
-            }
-        </div>
-    )
+type State = {
+    isHovered: boolean;
+};
+
+export default class IconButton extends Component<Props, State> {
+    constructor() {
+        super(...arguments);
+        autobind(this);
+        this.state = {
+            isHovered: false,
+        };
+    }
+
+    render() {
+        let {text, icon, textStyle, style, iconStyle, ...otherProps} = this.props;
+        let composedStyle = {...styles.iconButton, ...style};
+        let composedIconStyle = {
+            ...styles.icon, 
+            color: this.state.isHovered ? 'rgb(200, 60, 60)' : 'rgba(100, 100, 100, 0.6)',
+            ...iconStyle,
+        };
+        let composedTextStyle = {
+            ...styles.text, 
+            color: this.state.isHovered ? 'rgb(200, 60, 60)' : 'rgba(100, 100, 100, 0.6)',
+            ...textStyle,
+        };
+        return (
+            <div 
+                style={composedStyle} 
+                onMouseOver={() => this.setState({isHovered: true})} 
+                onMouseOut={() => this.setState({isHovered: false})}
+                {...otherProps}
+            >
+                <FontIcon className="material-icons" style={composedIconStyle}>{icon}</FontIcon>
+                {
+                    text ? (
+                        <span style={composedTextStyle}>{text}</span>
+                    ) : null
+                }
+            </div>
+        )
+    }
 }
 
 const styles = {
