@@ -37,7 +37,10 @@ class ProductList extends Component<Props, State> {
   }
 
   componentWillMount() {
-    this.props.fetchInitialData();
+    console.log(this.props.products.length);
+    if (this.props.products.length === 0) {
+      this.props.fetchInitialData();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -150,5 +153,6 @@ const styles = {
     display: 'flex',
     marginLeft: '37%',
     marginRight: '37%',
+    marginTop: '60px',
   },
 }
