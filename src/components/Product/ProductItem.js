@@ -81,16 +81,16 @@ export default class ProductItem extends Component<Props, State> {
                     isDisplayingDetail ? (
                         <div style={{...styles.interactionButtons, flexDirection: 'column', height: '100px'}}>
                             <div style={{...styles.likeShareContainer, width: '100%'}}>
-                                <IconButton text="Naksir" icon="favorite" />
-                                <IconButton text="Bagikan" icon="share" />
+                                <IconButton text="Naksir" icon="favorite" style={{justifyContent: 'center', paddingLeft: 0}} />
+                                <IconButton text="Bagikan" icon="share" style={{paddingLeft: 0, justifyContent: 'center'}} />
                             </div>
                             <Button text="Cek stok yang ready" style={{width: '100%', height: '40px', marginBottom: '10px'}}/>
                         </div>
                     ) : (
                         <div style={styles.interactionButtons}>
                             <div style={styles.likeShareContainer}>
-                                <IconButton text="Naksir" icon="favorite" />
-                                <IconButton text="Bagikan" icon="share" />
+                                <IconButton text="Naksir" icon="favorite" style={{paddingLeft: 0, justifyContent: 'center'}} />
+                                <IconButton text="Bagikan" icon="share" style={{paddingLeft: 0, justifyContent: 'center'}} />
                             </div>
                             <Button text="BELI" onClick={this.onProductPress} style={{marginBottom: 10, marginTop: 10}}/>
                         </div>

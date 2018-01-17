@@ -17,7 +17,7 @@ export default class Home extends Component<any, State> {
     super(...arguments);
     autobind(this);
     this.state = {
-      displaying: 'products',
+      displaying: 'CMS',
     };
   }
 
@@ -30,6 +30,7 @@ export default class Home extends Component<any, State> {
             src="https://www.salestockindonesia.com/assets/images/logo-ss-34f2d4dd.png" 
             width={119} 
             height={37.75}
+            alt=""
           />
           <div style={styles.buttonContainer}>
             <IconButton 

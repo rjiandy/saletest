@@ -1,7 +1,6 @@
 // @flow
 
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import autobind from 'class-autobind';
 
 import {IconButton} from '../core-ui';
@@ -14,7 +13,7 @@ type Props = any;
 
 type ProductRowProps = {
   product: Product;
-  onDetailPress: (id: number) => void;
+  onDetailPress: (product: Product) => void;
 };
 
 function ProductRow(props: ProductRowProps) {
@@ -86,7 +85,7 @@ export default class CMSProductList extends Component<Props, State> {
             </div>
           </div>
           {
-            this.props.products.map((product) => <ProductRow product={product} key={product.id} onDetailPress={this.props.onDetailPress} />)
+            this.props.products.map((product) => <ProductRow product={product} key={product.id} onDetailPress={() => this.props.onDetailPress(product)} />)
           }
         </div>
       </div>

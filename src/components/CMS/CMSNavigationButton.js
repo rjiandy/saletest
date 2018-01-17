@@ -8,16 +8,18 @@ type CMSNavigationButtonProps = {
   onClick: () => void;
   text: string, 
   icon: string;
+  disabled?: boolean;
 }
 
 export default function CMSNavigationButton(props: CMSNavigationButtonProps) {
-  let {isSelected, text, icon, onClick} = props;
+  let {isSelected, text, icon, onClick, disabled} = props;
   let containerSelectedStyle = {
     display: 'flex',
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: isSelected ? 'rgba(215, 215, 215, 0.3)' : 'white',
+    backgroundColor: isSelected ? 'rgba(215, 215, 215, 0.3)' : disabled ? 'rgba(120, 120, 120, 0.4)' : 'white',
+    cursor: disabled ? 'not-allowed' : 'pointer',
   };
   let iconTextSelectedStyle = {
     color: isSelected ? 'rgb(215, 60, 60)' : 'rgba(100, 100, 100, 0.6)',
@@ -27,7 +29,7 @@ export default function CMSNavigationButton(props: CMSNavigationButtonProps) {
       <IconButton 
         text={text}
         icon={icon}
-        onClick={onClick}
+        onClick={disabled ? () => null : onClick}
         style={containerSelectedStyle}
         iconStyle={iconTextSelectedStyle}
         textStyle={iconTextSelectedStyle}

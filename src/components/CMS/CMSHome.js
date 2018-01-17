@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import CMSNavigationButton from './CMSNavigationButton';
 import CMSProductList from './CMSProductList';
+import CMSProductDetail from './CMSProductDetail';
 
 import type {Product} from '../../types/Product-type';
 import type {Dispatch, RootState} from '../../stores/createStore';
@@ -15,7 +16,7 @@ import type {Dispatch, RootState} from '../../stores/createStore';
 type Props = any;
 type State = {
   displaying: 'dashboard' | 'insert' | 'update';
-  selectedProduct: ?number;
+  selectedProduct: ?Product;
 };
 
 export class CMSHome extends Component<Props, State> {
@@ -24,7 +25,7 @@ export class CMSHome extends Component<Props, State> {
     super(...arguments);
     autobind(this);
     this.state = {
-      displaying: 'dashboard',
+      displaying: 'insert',
       selectedProduct: null,
     };
   }
@@ -57,19 +58,21 @@ export class CMSHome extends Component<Props, State> {
       CMSContent = (
         <CMSProductList 
           products={products} 
-          // onDetailPress={(id) => this.setState({displaying: 'update', selectedProduct: id})}
+          onDetailPress={(product) => this.setState({displaying: 'update', selectedProduct: product})}
         />
       );
+    } else if (displaying === 'insert') {
+      CMSContent = (
+        <CMSProductDetail insert />
+      );
+    } else if (displaying === 'update' && this.state.selectedProduct != null) {
+      CMSContent = (
+        <CMSProductDetail product={this.state.selectedProduct} />
+      );
+    } else {
+      CMSContent = null;
     }
-    // if (displaying === 'dashboard') {
-    //   CMSContent = (
-    //     <CMSProductList />
-    //   );
-    // } else if (displaying === 'insert') {
-    //   <CMSProductDetail insert />
-    // } else {
-    //   <CMSProductDetail product={this.state.selectedProduct} />
-    // }
+
     return (
       <div style={styles.CMSContainer}>
         <div style={styles.CMSNavigations}>
@@ -84,6 +87,13 @@ export class CMSHome extends Component<Props, State> {
             icon="add"
             isSelected={displaying === 'insert'}
             onClick={() => this.setState({displaying: 'insert'})}
+          />
+          <CMSNavigationButton 
+            text="Edit Product"
+            icon="edit"
+            isSelected={displaying === 'update'}
+            disabled
+            onClick={() => this.setState({displaying: 'dashboard'})}
           />
         </div>
         <div style={styles.CMSContent}>
