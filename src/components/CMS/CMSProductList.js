@@ -40,10 +40,16 @@ function ProductRow(props: ProductRowProps) {
         {product.description.slice(0, 40) + '. . .'}
       </div>
       <div style={{...styles.tableHeaderText, borderRight: '0px', maxWidth: '50px'}}>
+        <IconButton icon="edit" style={{paddingLeft: '6px', marginRight: '3px'}} onClick={onDetailPress} />
+        <IconButton icon="delete" style={{paddingLeft: '0px'}} />
       </div>
     </div>
   )
 }
+// NOTE: Didn't build the functional through redux saga yet. It simply dispatch an action, let saga handle the side effect and communicate to server
+//       By using this method we can etiher provide an optimistic update by only changing the redux or reset the store based on the effects and wait for new data
+//       from server
+
 
 export default class CMSProductList extends Component<Props, State> {
   constructor() {
@@ -107,7 +113,6 @@ const styles = {
     flexDirection: 'column',
     overflowY: 'scroll',
     borderTop: '1px solid rgba(175, 175, 175, 0.5)',
-    borderBottom: '1px solid rgba(175, 175, 175, 0.5)',
   },
   title: {
     fontSize: 28,

@@ -52,7 +52,15 @@ export class CMSHome extends Component<Props, State> {
         </div>
       );
     }
-    // let CMSContent = (<CMSProductList products={products} />);
+    let CMSContent = null;
+    if (displaying === 'dashboard') {
+      CMSContent = (
+        <CMSProductList 
+          products={products} 
+          // onDetailPress={(id) => this.setState({displaying: 'update', selectedProduct: id})}
+        />
+      );
+    }
     // if (displaying === 'dashboard') {
     //   CMSContent = (
     //     <CMSProductList />
@@ -79,10 +87,7 @@ export class CMSHome extends Component<Props, State> {
           />
         </div>
         <div style={styles.CMSContent}>
-          <CMSProductList 
-            products={products} 
-            // onDetailPress={(id) => this.setState({displaying: 'update', selectedProduct: id})}
-          />
+          {CMSContent}
         </div>
       </div>
     )
