@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Provider} from 'react-redux';
-import ProductList from './components/ProductList';
+
+import Home from './Home';
 
 import store from './stores/createStore';
 
@@ -13,7 +14,7 @@ class App extends Component<any, any> {
       <MuiThemeProvider uiTheme={{}}>
         <Provider store={store}>
           <div style={styles.app}>
-            <ProductList />
+            <Home />
           </div>
         </Provider>
       </MuiThemeProvider>
