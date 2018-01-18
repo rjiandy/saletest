@@ -2,6 +2,8 @@
 
 exports[`renders correctly with props 1`] = `
 <div
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   style={
     Object {
       "alignItems": "center",
@@ -34,6 +36,7 @@ exports[`renders correctly with props 1`] = `
   <span
     style={
       Object {
+        "color": "rgba(100, 100, 100, 0.6)",
         "marginLeft": "6px",
       }
     }

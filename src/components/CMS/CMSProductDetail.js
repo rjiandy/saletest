@@ -137,6 +137,7 @@ export default class CMSProductDetail extends Component<Props, State> {
                     type="text" 
                     disabled 
                     value={productID} 
+                    readOnly                    
                     style={{...styles.inputStyle, width: '32px', textAlign: 'center'}} 
                   />
                 </div>
@@ -193,7 +194,7 @@ export default class CMSProductDetail extends Component<Props, State> {
                 <input type="file" accept="image/png" style={styles.inputFile} onChange={this.onFileUpload} />
               </div>
               <div style={styles.submitContainer}>
-                <input type="Submit" value="SUBMIT" style={styles.submitButtonStyle} />
+                <input type="submit" value="SUBMIT" style={styles.submitButtonStyle} onClick={this.onSubmit}/>
               </div>
             </form>
           </div>
