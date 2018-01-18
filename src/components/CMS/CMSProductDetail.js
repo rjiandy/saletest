@@ -10,6 +10,7 @@ let noImageSrc = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_a
 type Props = {
   insert?: boolean; // True: Blank Form, False: Need Product as a props
   product?: ?Product;
+  onSubmit: (Product) => void;
 };
 
 type State = {
@@ -47,7 +48,17 @@ export default class CMSProductDetail extends Component<Props, State> {
   }
 
   onSubmit(e: Event) {
+    let {productID, productName, productPrice, productDescription} = this.state;
+    let {product} = this.props;
     e.preventDefault();
+    this.props.onSubmit({
+      id: productID,
+      name: productName,
+      price: productPrice.toString() + '.000',
+      description: productDescription,
+      image: 'https://source.unsplash.com/880x880/?car,bike',
+      likes: product && product.likes ? product.likes : 0,
+    })
     this.setState({
       productID: Math.floor(Math.random() * 1000),
       productName: '',
@@ -57,7 +68,6 @@ export default class CMSProductDetail extends Component<Props, State> {
       file: null,
       imagePreview: null,
     });
-    console.log('SUBMITTED');
   }
 
   onFileUpload(e: Event) {

@@ -37,7 +37,6 @@ class ProductList extends Component<Props, State> {
   }
 
   componentWillMount() {
-    console.log(this.props.products.length);
     if (this.props.products.length === 0) {
       this.props.fetchInitialData();
     }

@@ -36,7 +36,7 @@ function ProductRow(props: ProductRowProps) {
         {product.image}
       </div>
       <div style={{...styles.rowContent, maxWidth: '300px'}}>
-        {product.description.slice(0, 40) + '. . .'}
+        {product.description.length > 40 ? product.description.slice(0, 40) + '. . .' : product.description}
       </div>
       <div style={{...styles.tableHeaderText, borderRight: '0px', maxWidth: '50px'}}>
         <IconButton icon="edit" style={{paddingLeft: '6px', marginRight: '3px'}} onClick={onDetailPress} />

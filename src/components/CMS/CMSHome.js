@@ -35,7 +35,12 @@ export class CMSHome extends Component<Props, State> {
       this.props.fetchInitialData();
     }
   }
-
+  onSubmitProduct(product: Product) {
+    let {displaying} = this.state;
+    this.setState({
+      displaying: 'dashboard',
+    }, this.props.manageProduct(product, displaying === 'insert'));
+  }
   render() {
     let {displaying} = this.state;
     let {products, isLoading} = this.props;
@@ -63,11 +68,17 @@ export class CMSHome extends Component<Props, State> {
       );
     } else if (displaying === 'insert') {
       CMSContent = (
-        <CMSProductDetail insert />
+        <CMSProductDetail 
+          insert 
+          onSubmit={this.onSubmitProduct}
+        />
       );
     } else if (displaying === 'update' && this.state.selectedProduct != null) {
       CMSContent = (
-        <CMSProductDetail product={this.state.selectedProduct} />
+        <CMSProductDetail 
+          product={this.state.selectedProduct} 
+          onSubmit={this.onSubmitProduct}
+        />
       );
     } else {
       CMSContent = null;
@@ -119,6 +130,17 @@ function mapDispatchToProps(dispatch: Dispatch) {
         type: 'FETCH_INITIAL_DATA_REQUESTED',
       });
     },
+    manageProduct(product: Product, isInsert: boolean) {
+      isInsert ? 
+        dispatch({
+          type: 'INSERT_NEW_DATA_REQUESTED',
+          newProduct: product,
+        }) :
+        dispatch({
+          type: 'UPDATE_DATA_REQUESTED',
+          product
+        });
+    }
   }
 }
 

@@ -31,6 +31,12 @@ export type Action = {
 } | {
     type: 'FETCH_MORE_DATA_FAILED';
     error: Error;
+} | {
+    type: 'INSERT_NEW_DATA_REQUESTED';
+    newProduct: Product;
+} | {
+    type: 'UPDATE_DATA_REQUESTED';
+    product: Product;
 };
 
 let sagaMiddleware = createSagaMiddleware();
