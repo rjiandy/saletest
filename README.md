@@ -6,8 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Clone/Download this project into your development env.
 * install dependencies using `npm install`
 * run the apps using `npm start`
+* run the tests using `npm test`
 
-## Assumption && Side Notes##
+## Assumption && Side Notes ##
 * The detail of the item only display some text instead of rendering a whole new page
 * There are mock api function calls that can be change if there's a back-end
 * CMS can be accessed using `pen` button on the header
